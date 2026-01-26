@@ -1,0 +1,14 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left glasses frame -->
+  <circle cx="12" cy="20" r="8" fill="none" stroke="#6366F1" stroke-width="2"/>
+  <!-- Right glasses frame -->
+  <circle cx="28" cy="20" r="8" fill="none" stroke="#6366F1" stroke-width="2"/>
+  <!-- Bridge -->
+  <line x1="20" y1="20" x2="20" y2="20" stroke="#6366F1" stroke-width="2"/>
+  <!-- Left temple -->
+  <path d="M 20 20 Q 15 25 10 28" stroke="#6366F1" stroke-width="2" fill="none"/>
+  <!-- Right temple -->
+  <path d="M 20 20 Q 25 25 30 28" stroke="#FF6B6B" stroke-width="2" fill="none"/>
+  <!-- Accent dot -->
+  <circle cx="6" cy="28" r="2" fill="#FFD700"/>
+</svg>
