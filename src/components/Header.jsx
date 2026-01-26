@@ -6,7 +6,7 @@ const Header = () => {
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent('Halo Nours Eyewear! Saya ingin berkonsultasi tentang produk Anda. 👋');
-    window.open(`https://wa.me/685718572857?text=${message}`, '_blank');
+    window.open(`https://wa.me/685780801122?text=${message}`, '_blank');
   };
 
   const scrollToSection = (id) => {

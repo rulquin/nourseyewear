@@ -4,7 +4,7 @@ import '../styles/cta.css';
 const CTA = () => {
   const handleWhatsApp = () => {
     const message = encodeURIComponent('Halo Nours Eyewear! Saya ingin berkonsultasi tentang koleksi kacamata Anda. Bisa dibantu? 👋');
-    window.open(`https://wa.me/685776445644?text=${message}`, '_blank');
+    window.open(`https://wa.me/685780801122?text=${message}`, '_blank');
   };
 
   return (

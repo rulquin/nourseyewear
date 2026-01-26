@@ -4,7 +4,7 @@ import '../styles/hero.css';
 const Hero = () => {
   const handleWhatsApp = () => {
     const message = encodeURIComponent('Halo! Saya tertarik dengan produk Nours Eyewear. Bisakah Anda memberikan informasi lebih lanjut? 👀');
-    window.open(`https://wa.me/685776445644?text=${message}`, '_blank');
+    window.open(`https://wa.me/685780801122?text=${message}`, '_blank');
   };
 
   return (
