@@ -1,0 +1,50 @@
+name: Build and Deploy to EdgeOne Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to gh-pages branch (static files)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
+
+      - name: Trigger EdgeOne deploy (optional)
+        if: ${{ secrets.EDGEONE_API_TOKEN != '' && secrets.EDGEONE_SITE_ID != '' }}
+        run: |
+          # Example: call EdgeOne API to trigger a deploy or notify EdgeOne that new files are available.
+          # Replace the URL and payload with the correct EdgeOne Pages API endpoint and parameters.
+          curl -X POST "https://api.edgeone.tencent.com/pages/v1/sites/${{ secrets.EDGEONE_SITE_ID }}/deploy" \
+            -H "Authorization: Bearer ${{ secrets.EDGEONE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"ref":"gh-pages"}' || true
+
+# Notes:
+# - This workflow builds the project on push to `main` (and can be triggered manually via `workflow_dispatch`) and pushes `dist` to `gh-pages` branch.
+# - EdgeOne Pages can be configured to serve content from the `gh-pages` branch (or from a separate branch you choose).
+# - If you prefer EdgeOne to build from source, you can instead connect your GitHub repo in EdgeOne console and set the build command to `npm ci && npm run build` and output dir to `dist`.
+# - If you have EdgeOne API docs and token, set the secrets `EDGEONE_API_TOKEN` and `EDGEONE_SITE_ID` in your repo settings to enable the optional API step (replace the example endpoint with the real one from docs).
